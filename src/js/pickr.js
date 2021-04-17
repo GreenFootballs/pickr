@@ -442,6 +442,7 @@ class Pickr {
                 // Cancel selecting if the user taps behind the color picker
                 _.on(document, ['touchstart', 'mousedown'], e => {
                     if (this.isOpen() && !_.eventPath(e).some(el => el === _root.app || el === _root.button)) {
+                        e.stopPropagation();
                         this.hide();
                     }
                 }, {capture: true})
